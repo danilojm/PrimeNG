@@ -1,0 +1,22 @@
+{
+"data": [
+    {
+        "id": "1",
+        "name": "Bob Brown",
+        "email": "bobbrown@gmail.com",
+        "employeePosition": "Director"
+    },
+    {
+        "id": "2",
+        "name": "Ejonhson",
+        "email": "ejonhson@gmail.com",
+        "employeePosition": "CEO"
+    },
+    {
+        "id": "3",
+        "name": "Bowser",
+        "email": "bowser@gmail.com",
+        "employeePosition": "Mario Boss"
+    }
+]
+}
