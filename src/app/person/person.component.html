@@ -1,0 +1,79 @@
+<div class="ui-g">
+    <p-toast></p-toast>
+    <p-confirmDialog header="Confirmação" acceptLabel="Sim" rejectLabel="Não" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    <p-panel header="Administração" [style]="{width: '70%', margin: '0 auto'}">
+        <div style="margin-bottom: 20px">
+            <p-menubar [model]="items"></p-menubar>
+        </div>
+        <p-table [columns]="cols" [value]="persons" responsiveLayout="scroll" selectionMode="single" [(selection)]="selectedPerson" dataKey="id" [paginator]="true" [rows]="5">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" [pSortableColumn]="col.field" class="text-center">
+                        {{col.header}}
+                        <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-person >
+                <tr [pSelectableRow]="person">
+                    <td>{{person.name}}</td>
+                    <td>{{person.email}}</td>
+                    <td>{{person.jobTitle}}</td>
+                    <td>{{person.phone}}</td>
+                    <td><img [src]="person.imageURL" [alt]="person.name" width="100" class="p-shadow-4" /></td>
+                    <td>{{person.employeeCode}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p-panel>
+    <p-dialog header="Novo Registro" [responsive]="true" [style]="{width: '400px'}" [(visible)]="displaySaveDialog"
+        [modal]="true">
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label for="name">Nome</label>
+                </div>
+                <div class="ui-g-8">
+                    <input pInputText id="name" [(ngModel)]="person.name" />
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label for="email">Email</label>
+                </div>
+                <div class="ui-g-8">
+                    <input pInputText id="email" [(ngModel)]="person.email" />
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label for="jobTitle">Cargo</label>
+                </div>
+                <div class="ui-g-8">
+                    <input pInputText id="jobTitle" [(ngModel)]="person.jobTitle" />
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label for="phone">Telefone</label>
+                </div>
+                <div class="ui-g-8">
+                    <input pInputText id="phone" [(ngModel)]="person.phone" />
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label for="imagem">Imagem</label>
+                </div>
+                <div class="ui-g-8">
+                    <input pInputText id="imagem" [(ngModel)]="person.imageURL" />
+                </div>
+            </div>
+        </div>
+        <p-footer>
+            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                <button type="button" pButton icon="pi pi-check" (click)="save()" label="Salvar"></button>
+            </div>
+        </p-footer>
+    </p-dialog>
+</div>
